@@ -16,13 +16,13 @@ BLACK = False
 
 def askForPlayerSide() -> bool:
     playerChoiceInput = input(
-        'What side would you like to play as [wB]? ',
+        'За какую сторону Вы хотели бы играть [wB]? ',
     ).lower()
     if 'w' in playerChoiceInput:
-        print('You will play as white')
+        print('Вы будете играть за белых')
         return WHITE
     else:
-        print('You will play as black')
+        print('Вы будете играть за черных')
         return BLACK
 
 
@@ -31,17 +31,17 @@ def askForDepthOfAI() -> int:
     try:
         depthInput = int(
             input(
-                'How deep should the AI look for moves?\n'
-                'Warning : values above 3 will be very slow.'
+                'Насколько глубокий поиск ходов должен осуществлять ИИ?\n'
+                'Предупреждение: при значениях выше 3 будет работать очень медленно.'
                 ' [2]? ',
             ),
         )
         while depthInput <= 0:
             depthInput = int(
                 input(
-                    'How deep should the AI look for moves?\n'
-                    'Warning : values above 3 will be very slow. '
-                    'Your input must be above 0.'
+                'Насколько глубокий поиск ходов должен осуществлять ИИ?\n'
+                'Предупреждение: при значениях выше 3 будет работать очень медленно.'
+                    'Ваши входные данные должны быть больше 0.'
                     ' [2]? ',
                 ),
             )
@@ -49,17 +49,17 @@ def askForDepthOfAI() -> int:
     except KeyboardInterrupt:
         sys.exit()
     except Exception:
-        print('Invalid input, defaulting to 2')
+        print('Неверный ввод, по умолчанию 2')
     return depthInput
 
 
 def printCommandOptions() -> None:
-    undoOption = 'u : undo last move'
-    printLegalMovesOption = 'l : show all legal moves'
-    randomMoveOption = 'r : make a random move'
-    printGameMoves = 'gm: moves of current game in PGN format'
-    quitOption = 'quit : resign'
-    moveOption = 'a3, Nc3, Qxa2, etc : make the move'
+    undoOption = 'u : отменить последний шаг'
+    printLegalMovesOption = 'l : показать все возможные ходы'
+    randomMoveOption = 'r : сделать случайный ход'
+    printGameMoves = 'gm: ходы текущей партии в формате PGN'
+    quitOption = 'quit : в отставку'
+    moveOption = 'a3, Nc3, Qxa2, и т.д. : сделать ход'
     options = [
         undoOption,
         printLegalMovesOption,
@@ -87,7 +87,7 @@ def getRandomMove(board: Board, parser: InputParser) -> Move:
 
 
 def makeMove(move: Move, board: Board) -> None:
-    print('Making move : ' + move.notation)
+    print('Перемещение : ' + move.notation)
     board.makeMove(move)
 
 
@@ -121,26 +121,26 @@ def startGame(board: Board, playerSide: bool, ai: AI) -> None:
     while True:
         if board.isCheckmate():
             if board.currentSide == playerSide:
-                print('Checkmate, you lost')
+                print('Шах и мат, вы проиграли')
             else:
-                print('Checkmate! You won!')
+                print('Шах и мат! Вы победили!')
             printGameMoves(board.history)
             return
 
         if board.isStalemate():
-            print('Stalemate')
+            print('Патовая ситуация')
             printGameMoves(board.history)
             return
 
         if board.noMatingMaterial():
-            print('Draw due to no mating material')
+            print('Ничья из-за отсутствия сопрягаемого материала')
             printGameMoves(board.history)
             return
 
         if board.currentSide == playerSide:
             # printPointAdvantage(board)
             move = None
-            command = input("It's your move." " Type '?' for options. ? ")
+            command = input("Ваш ход." " Введите '?' для просмотра действий. ? ")
             if command.lower() == 'u':
                 undoLastTwoMoves(board)
                 printBoard(board)
@@ -167,7 +167,7 @@ def startGame(board: Board, playerSide: bool, ai: AI) -> None:
             printBoard(board)
 
         else:
-            print('AI thinking...')
+            print('ИИ думает...')
             move = ai.getBestMove()
             move.notation = parser.notationForMove(move)
             makeMove(move, board)
@@ -180,17 +180,17 @@ def twoPlayerGame(board: Board) -> None:
     while True:
         printBoard(board)
         if board.isCheckmate():
-            print('Checkmate')
+            print('Шах и мат')
             printGameMoves(board.history)
             return
 
         if board.isStalemate():
-            print('Stalemate')
+            print('Патовая ситуация')
             printGameMoves(board.history)
             return
 
         if board.noMatingMaterial():
-            print('Draw due to no mating material')
+            print('Ничья из-за отсутствия сопрягаемого материала')
             printGameMoves(board.history)
             return
 
@@ -200,8 +200,8 @@ def twoPlayerGame(board: Board) -> None:
         else:
             parser = parserBlack
         command = input(
-            f"It's your move, {board.currentSideRep()}."
-            + " Type '?' for options. ? ",
+            f"Ваш ход, {board.currentSideRep()}."
+            + " Введите '?' для просмотра действий. ? ",
         )
         if command.lower() == 'u':
             undoLastTwoMoves(board)
@@ -232,17 +232,17 @@ board = Board()
 def main() -> None:
     parser = argparse.ArgumentParser(
         prog='chess',
-        description='A python program to play chess '
-        'against an AI in the terminal.',
+        description='Программа для игры в шахматы на языке python '
+        'против искусственного интеллекта в терминале.',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-        epilog='Enjoy the game!',
+        epilog='Приятной игры!',
     )
     parser.add_argument(
         '-t',
         '--two',
         action='store_true',
         default=False,
-        help='to play a 2-player game',
+        help='для игры на двоих',
     )
     parser.add_argument(
         '-w',
@@ -250,7 +250,7 @@ def main() -> None:
         action='store',
         default='white',
         metavar='W',
-        help='color for white player',
+        help='цвет для белого игрока ',
     )
     parser.add_argument(
         '-b',
@@ -258,14 +258,14 @@ def main() -> None:
         action='store',
         default='black',
         metavar='B',
-        help='color for black player',
+        help='цвет для черного игрока ',
     )
     parser.add_argument(
         '-c',
         '--checkered',
         action='store_true',
         default=False,
-        help='use checkered theme for the chess board',
+        help='использовать клетчатую тематику для шахматной доски',
     )
 
     args = parser.parse_args()
