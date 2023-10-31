@@ -13,51 +13,50 @@
 [![GitHub stars](https://img.shields.io/github/stars/marcusbuffett/command-line-chess.svg?style=social&label=Star&maxAge=2592000)](https://github.com/marcusbuffett/command-line-chess)
 
 
-A python program to play chess against an AI in the terminal.
+Программа на языке python для игры в шахматы с искусственным интеллектом в терминале.
 
-Also check out my other project, a [chess training site](https://chessmadra.com/).
+Также ознакомьтесь с другим моим проектом - [шахматным обучающим сайтом].(https://chessmadra.com/).
 
-## Features
+## Особенности
 
-- Play chess against an AI in the terminal
-- Two player mode (run `chess --two` to enter)
-- possible commands:
-    * `a3`, `Nc3`, `Qxa`, etc: make a move
-    * `l`: prints every legal move
-    * `r`: make a random move
-    * `u`: undo your last move
-    * `quit`: resign the current game
-    * `gm`: prints moves of current game in PGN format
-    * `?`: help, prints all available commands
+- Игра в шахматы против искусственного интеллекта в терминале
+- Режим двух игроков (для входа выполните команду `chess --two`)
+- возможные команды:
+    * `a3`, `Nc3`, `Qxa` и т.д.: сделать ход
+    * `l`: печатает каждый законный ход
+    * `r`: сделать случайный ход
+    * `u`: отменить последний ход
+    * `quit`: выйти из текущей игры
+    * `gm`: распечатывает ходы текущей игры в формате PGN
+    * `?`: помощь, выводит все доступные команды
 
-## Screenshots
-Initial State:
+## Скриншоты
+Исходное состояние:
 
 ![Initial](https://i.imgur.com/PSS7csc.png)
 
-First move:
+Первый ход:
 
 ![First move](https://i.imgur.com/AsXhhvC.png)
 
-## Installation
+## Установка
 
-### Install from [PyPI](https://pypi.org/project/cl-chess/)
-Just run the following command:
-
+### Установить из [PyPI](https://pypi.org/project/cl-chess/)
+Просто выполните следующую команду:
 ```
 pip install cl-chess
 ```
 
-### Install from source
-- First clone the repository:
+### Установка из исходного кода
+- Сначала клонируйте репозиторий:
 ```
-git clone https://github.com/marcusbuffett/command-line-chess
+git clone https://github.com/Totozao/command-line-chess-RU-
 ```
-- navigate into the newly created `command-line-chess` directory and run:
+- перейдите в только что созданный каталог `command-line-chess-RU-` и запустите его:
 ```
 pip install .
 ```
-## Usage
+## Использование
 
 ```sh
 chess -h        # to see all possible options
@@ -65,40 +64,44 @@ chess -h        # to see all possible options
 ```
 usage: chess [-h] [-t] [-w W] [-b B] [-c]
 
-A python program to play chess against an AI in the terminal.
+Программа на языке python для игры в шахматы с искусственным интеллектом в терминале.
 
-optional arguments:
-  -h, --help       show this help message and exit
-  -t, --two        to play a 2-player game (default: False)
-  -w W, --white W  color for white player (default: white)
-  -b B, --black B  color for black player (default: black)
-  -c, --checkered  use checkered theme for the chess board (default: False)
+необязательные аргументы:
+  -h, --help вывести справочное сообщение и выйти из игры
+  -t, --two играть в игру для двух игроков (по умолчанию: False)
+  -w W, --white W цвет для белого игрока (по умолчанию: белый)
+  -b B, --black B цвет для черного игрока (по умолчанию: черный)
+  -c, --checkered использовать клетчатую тему для шахматной доски (по умолчанию: False)
 
-Enjoy the game!
+Приятной игры!
 
 ```
 
-## Contributing
+## Участие
 
-Contributions are always welcome!
+Вклады всегда приветствуются!
 
-See `CONTRIBUTING.md`for ways to get started.
+О том, как начать работу, см. в разделе `CONTRIBUTING.md`.
 
-Please adhere to this project's `CODE-OF-CONDUCT.md`.
+Пожалуйста, соблюдайте `CODE-OF-CONDUCT.md` этого проекта.
 
 
-## LICENSE
+## Лицензия
 Take a look at the [LICENSE](https://github.com/marcusbuffett/command-line-chess/LICENSE) file
 
-## Authors
+## Авторы
 
 - [@marcusbuffett](https://www.github.com/marcusbuffett)
 - [@ClasherKasten](https://www.github.com/ClasherKasten)
 
 
-## Questions, bugs, etc.
-Please create an issue.
+## Вопросы, ошибки и т.д.
+Пожалуйста, создайте вопрос.
 
-## Technical stuff
+## Технические вопросы
 
-The AI is a simple brute-force AI with no pruning. It evaluates a given position by counting the value of the pieces for each side (pawn -> 1, knight/bishop -> 3, rook -> 5, queen -> 9). It will evaluate the tree of moves, and take the path that results in the greatest gain. To learn more, check out [my post on how it works](https://mbuffett.com/posts/chess-ai/).
+ИИ представляет собой простой грубый ИИ без обрезки. Он оценивает заданную позицию, подсчитывая стоимость фигур для каждой стороны (пешка -> 1, конь/слон -> 3, ладья -> 5, ферзь -> 9). Он оценивает дерево ходов и выбирает тот путь, который дает наибольший выигрыш. Более подробную информацию можно найти в [моем посте о том, как это работает] (https://mbuffett.com/posts/chess-ai/).
+
+## Примечание
+
+Данный репозиторий создан исключительно в юмористических целях и приследует только желание перевести интерфейс шахмат в терминале на русском, все ссылки сохранены, за исключением инструкции по установке и клонированию оригинального материала
